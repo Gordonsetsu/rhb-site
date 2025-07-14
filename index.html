@@ -283,32 +283,47 @@ function nextSlide() {
 renderDots();
 timer = setInterval(nextSlide, 10000);
 
-    // MENU DRAWER
-    const menuBtn = document.getElementById('menuBtn');
-    const menuDrawer = document.getElementById('menuDrawer');
-    let menuOpen = false;
-    menuBtn.onclick = function() {
-      menuOpen = !menuOpen;
-      menuDrawer.classList.toggle('active', menuOpen);
-    };
-    // ESC关闭菜单
-    document.addEventListener('keydown', e=>{
-      if(e.key==="Escape" && menuOpen) {
-        menuDrawer.classList.remove('active');
-        menuOpen = false;
-      }
-    });
-    // 点击菜单外关闭
-     document.addEventListener('click', function(e) {
-         if (
-        menuOpen &&
-        !menuDrawer.contains(e.target) &&
-        !menuBtn.contains(e.target)
-        ) {
-         menuDrawer.classList.remove('active');
-         menuOpen = false;
+// MENU DRAWER
+const menuBtn = document.getElementById('menuBtn');
+const menuDrawer = document.getElementById('menuDrawer');
+let menuOpen = false;
+
+// 1. 点击按钮时阻止冒泡
+menuBtn.onclick = function(e) {
+  e.stopPropagation(); // <<==== 添加这行
+  menuOpen = !menuOpen;
+  menuDrawer.classList.toggle('active', menuOpen);
+};
+
+// 2. 菜单内部阻止冒泡 + 点击菜单内链接自动关闭
+menuDrawer.addEventListener('click', function(e) {
+  if (e.target.classList.contains('menu-link')) {
+    menuDrawer.classList.remove('active');
+    menuOpen = false;
+  }
+  e.stopPropagation(); // <<==== 添加这行
+});
+
+// 3. ESC关闭菜单
+document.addEventListener('keydown', e=>{
+  if(e.key==="Escape" && menuOpen) {
+    menuDrawer.classList.remove('active');
+    menuOpen = false;
   }
 });
+
+// 4. 点菜单外部关闭菜单
+document.addEventListener('click', function(e) {
+  if (
+    menuOpen &&
+    !menuDrawer.contains(e.target) &&
+    !menuBtn.contains(e.target)
+  ) {
+    menuDrawer.classList.remove('active');
+    menuOpen = false;
+  }
+});
+
   </script>
 </body>
 </html>
