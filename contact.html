@@ -181,6 +181,7 @@
     <a class="menu-link" href="shop.html">Shop</a>
     <a class="menu-link" href="contact.html">Contact</a>
   </div>
+
   <!-- 联系方式内容 -->
   <div class="contact-wrap">
     <div class="contact-title">Contact Us</div>
@@ -195,7 +196,8 @@
       <button class="contact-btn" type="submit">Send</button>
     </form>
   </div>
-  <!-- 菜单JS -->
+
+  <!-- 菜单JS：与lookbook完全一致 -->
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const menuDrawer = document.getElementById('menuDrawer');
@@ -211,4 +213,11 @@
       e.stopPropagation();
     });
     document.addEventListener('keydown', function(e) {
-      if (e.key === "Es
+      if (e.key === "Escape" && menuOpen) {
+        menuDrawer.classList.remove('active');
+        menuOpen = false;
+      }
+    });
+  </script>
+</body>
+</html>
