@@ -250,7 +250,9 @@
   <!-- 把圆点独立放在slides外面！ -->
   <div class="slider-dots" id="sliderDots"></div>
 </div>
+ 
   <script>
+    // HERO SLIDER
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('sliderDots');
 let curIdx = 0, timer;
@@ -280,38 +282,6 @@ function nextSlide() {
 
 renderDots();
 timer = setInterval(nextSlide, 10000);
-</script>
-
-  <script>
-    // HERO SLIDER
-    const slides = document.querySelectorAll('.slide');
-    const dotsContainer = document.getElementById('sliderDots');
-    let curIdx = 0, timer;
-    function renderDots() {
-      dotsContainer.innerHTML = '';
-      for(let i=0; i<slides.length; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'slider-dot'+(i===curIdx?' active':'');
-        dot.addEventListener('click', ()=>goSlide(i));
-        dotsContainer.appendChild(dot);
-      }
-    }
-    function goSlide(idx) {
-      slides[curIdx].classList.remove('active');
-      curIdx = idx;
-      slides[curIdx].classList.add('active');
-      renderDots();
-      restartAuto();
-    }
-    function nextSlide() {
-      let idx = (curIdx+1)%slides.length;
-      goSlide(idx);
-    }
-    function restartAuto() {
-      if(timer) clearInterval(timer);
-      timer = setInterval(nextSlide, 10000);
-    }
-    renderDots(); restartAuto();
 
     // MENU DRAWER
     const menuBtn = document.getElementById('menuBtn');
