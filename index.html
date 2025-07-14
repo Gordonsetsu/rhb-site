@@ -299,12 +299,16 @@ timer = setInterval(nextSlide, 10000);
       }
     });
     // 点击菜单外关闭
-    document.addEventListener('click', e=>{
-      if(menuOpen && !menuDrawer.contains(e.target) && !menuBtn.contains(e.target)){
-        menuDrawer.classList.remove('active');
-        menuOpen = false;
-      }
-    });
+     document.addEventListener('click', function(e) {
+         if (
+        menuOpen &&
+        !menuDrawer.contains(e.target) &&
+        !menuBtn.contains(e.target)
+        ) {
+         menuDrawer.classList.remove('active');
+         menuOpen = false;
+  }
+});
   </script>
 </body>
 </html>
