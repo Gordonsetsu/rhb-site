@@ -288,22 +288,6 @@ const menuBtn = document.getElementById('menuBtn');
 const menuDrawer = document.getElementById('menuDrawer');
 let menuOpen = false;
 
-// 1. 点击按钮时阻止冒泡
-menuBtn.onclick = function(e) {
-  e.stopPropagation(); // <<==== 添加这行
-  menuOpen = !menuOpen;
-  menuDrawer.classList.toggle('active', menuOpen);
-};
-
-// 2. 菜单内部阻止冒泡 + 点击菜单内链接自动关闭
-menuDrawer.addEventListener('click', function(e) {
-  if (e.target.classList.contains('menu-link')) {
-    menuDrawer.classList.remove('active');
-    menuOpen = false;
-  }
-  e.stopPropagation(); // <<==== 添加这行
-});
-
 // 3. ESC关闭菜单
 document.addEventListener('keydown', e=>{
   if(e.key==="Escape" && menuOpen) {
@@ -312,17 +296,20 @@ document.addEventListener('keydown', e=>{
   }
 });
 
-// 4. 点菜单外部关闭菜单
-document.addEventListener('click', function(e) {
-  if (
-    menuOpen &&
-    !menuDrawer.contains(e.target) &&
-    !menuBtn.contains(e.target)
-  ) {
+menuDrawer.addEventListener('click', function(e) {
+  if (!e.target.classList.contains('menu-link')) {
+    // 不是跳转链接就关闭菜单
+    menuDrawer.classList.remove('active');
+    menuOpen = false;
+  } else {
+    // 点到菜单链接可以正常跳转，也可以选择是否关闭
+    // 如果想点链接也关菜单，加上下面这两行
     menuDrawer.classList.remove('active');
     menuOpen = false;
   }
+  e.stopPropagation();
 });
+
 
   </script>
 </body>
