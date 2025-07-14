@@ -232,19 +232,24 @@
     <a class="menu-link" href="#Contact">Contact</a>
   </div>
   <!-- HERO SLIDER -->
-  <div class="hero-slider" id="heroSlider">
-    <!-- slides: 可添加多张大图+文本 -->
-    <div class="slide active" style="background-image:url('images/IMG_5297.jpg')">
-      <div class="slide-txt">THIS IS NOT JUST A SHOE.<br>IT'S A SCULPTURE YOU WALK IN.</div>
-    </div>
-    <div class="slide" style="background-image:url('images/IMG_5369.jpg')">
-      <div class="slide-txt">BLACK FLUIDITY<br><span style="font-size:1.3rem;font-family:'Inter',sans-serif;opacity:.7;">The unpredictable form of style</span></div>
-    </div>
-    <div class="slide" style="background-image:url('images/3.jpg')">
-      <div class="slide-txt">MONOCHROME, BUT NEVER MONOTONE</div>
-    <!-- 你可以根据需要添加更多slide，图片链接改成自己的 -->
-    <div class="slider-dots" id="sliderDots"></div>
+<div class="hero-slider" id="heroSlider">
+  <!-- slides: 可添加多张大图+文本 -->
+  <div class="slide active" style="background-image:url('images/IMG_5297.jpg')">
+    <div class="slide-txt">THIS IS NOT JUST A SHOE.<br>IT'S A SCULPTURE YOU WALK IN.</div>
   </div>
+  <div class="slide" style="background-image:url('images/IMG_5369.jpg')">
+    <div class="slide-txt">BLACK FLUIDITY<br>
+      <span style="font-size:1.3rem;font-family:'Inter',sans-serif;opacity:.7;">
+        The unpredictable form of style
+      </span>
+    </div>
+  </div>
+  <div class="slide" style="background-image:url('images/3.jpg')">
+    <div class="slide-txt">MONOCHROME, BUT NEVER MONOTONE</div>
+  </div>
+  <!-- 把圆点独立放在slides外面！ -->
+  <div class="slider-dots" id="sliderDots"></div>
+</div>
   <script>
     // HERO SLIDER
     const slides = document.querySelectorAll('.slide');
