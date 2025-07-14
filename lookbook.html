@@ -13,13 +13,15 @@
       --header-h: 60px;
       --radius: 14px;
     }
-    body {
+    html, body {
       background: var(--black);
       color: var(--white);
       font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
       margin: 0; padding: 0;
       min-height: 100vh;
       letter-spacing: 0.02em;
+      overflow-x: hidden;
     }
     .navbar {
       position: fixed;
@@ -47,7 +49,6 @@
       cursor: pointer;
       user-select: none;
     }
-    /* HAMBURGER */
     .hamburger {
       width: 38px; height: 38px;
       display: flex;
@@ -100,7 +101,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 2.6rem;
       text-align: center;
-      margin: 70px 0 36px 0;
+      margin: 90px 0 36px 0;
       letter-spacing: 0.04em;
       font-weight: 600;
     }
@@ -119,6 +120,7 @@
       object-fit: cover;
       aspect-ratio: 4/5;
       background: #222;
+      display: block;
     }
     .lookbook-img:hover {
       transform: scale(1.04);
@@ -146,8 +148,6 @@
       </button>
       <span class="logo">RHB</span>
     </div>
-    <!-- 右侧按钮可加可不加 -->
-    <!-- <div class="nav-right"> ... </div> -->
   </nav>
   <div class="menu-drawer" id="menuDrawer">
     <a class="menu-link" href="/">Home</a>
@@ -155,6 +155,7 @@
     <a class="menu-link" href="shop.html">Shop</a>
     <a class="menu-link" href="contact.html">Contact</a>
   </div>
+
   <!-- 主内容 -->
   <div class="lookbook-title">LOOKBOOK</div>
   <div class="lookbook-gallery">
@@ -163,9 +164,10 @@
     <img class="lookbook-img" src="images/IMG_5369.jpg" alt="Lookbook 3"/>
     <img class="lookbook-img" src="images/IMG_5335.jpg" alt="Lookbook 4"/>
     <img class="lookbook-img" src="images/IMG_5067.jpg" alt="Lookbook 5"/>
-    <!-- 继续添加产品照 -->
+    <!-- 继续添加产品图片 -->
   </div>
-  <!-- JS功能：菜单按钮开关 -->
+
+  <!-- 菜单JS -->
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const menuDrawer = document.getElementById('menuDrawer');
