@@ -283,31 +283,34 @@ function nextSlide() {
 renderDots();
 timer = setInterval(nextSlide, 10000);
 
-// MENU DRAWER
+// ===== RHB 导航栏菜单完整JS =====
+
+// 获取元素
 const menuBtn = document.getElementById('menuBtn');
 const menuDrawer = document.getElementById('menuDrawer');
 let menuOpen = false;
 
-// 3. ESC关闭菜单
-document.addEventListener('keydown', e=>{
-  if(e.key==="Escape" && menuOpen) {
-    menuDrawer.classList.remove('active');
-    menuOpen = false;
-  }
+// 1. 点击按钮切换菜单（阻止冒泡，防止点开就又被关）
+menuBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  menuOpen = !menuOpen;
+  menuDrawer.classList.toggle('active', menuOpen);
 });
 
+// 2. 点菜单抽屉内任何地方都能关闭菜单（含链接、空白）
+//   若你想点链接后不关闭，请用 class 判断，只关空白
 menuDrawer.addEventListener('click', function(e) {
-  if (!e.target.classList.contains('menu-link')) {
-    // 不是跳转链接就关闭菜单
-    menuDrawer.classList.remove('active');
-    menuOpen = false;
-  } else {
-    // 点到菜单链接可以正常跳转，也可以选择是否关闭
-    // 如果想点链接也关菜单，加上下面这两行
+  menuDrawer.classList.remove('active');
+  menuOpen = false;
+  e.stopPropagation();
+});
+
+// 3. 按ESC关闭菜单
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape" && menuOpen) {
     menuDrawer.classList.remove('active');
     menuOpen = false;
   }
-  e.stopPropagation();
 });
 
 
