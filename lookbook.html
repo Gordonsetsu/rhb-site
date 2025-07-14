@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RHB Lookbook</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;600&display=swap">
+  <style>
+    body {
+      background: #181818;
+      color: #fff;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0; padding: 0;
+      min-height: 100vh;
+      letter-spacing: 0.02em;
+    }
+    .navbar { /* 可粘贴你首页的navbar样式和结构 */ }
+    .lookbook-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.6rem;
+      text-align: center;
+      margin: 70px 0 36px 0;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+    }
+    .lookbook-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 34px;
+      padding: 0 8vw 64px 8vw;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+    .lookbook-img {
+      width: 100%; border-radius: 14px;
+      box-shadow: 0 10px 32px 0 rgba(0,0,0,0.22);
+      transition: transform 0.35s cubic-bezier(.44,1.1,.62,1.1), box-shadow .4s;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+      background: #222;
+    }
+    .lookbook-img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 24px 60px 2px rgba(0,0,0,0.37);
+    }
+    @media(max-width:900px){
+      .lookbook-title { font-size:2.0rem;}
+      .lookbook-gallery { gap: 18px; }
+    }
+    @media(max-width:500px){
+      .lookbook-gallery { padding:0 2vw 36px 2vw;}
+    }
+  </style>
+</head>
+<body>
+  <!-- 可粘贴你的navbar导航栏代码在这里，保证和首页风格一致 -->
+
+  <div class="lookbook-title">LOOKBOOK</div>
+  <div class="lookbook-gallery">
+    <img class="lookbook-img" src="images/IMG_5297.jpg" alt="Lookbook 1"/>
+    <img class="lookbook-img" src="images/IMG_5326.jpg" alt="Lookbook 2"/>
+    <img class="lookbook-img" src="images/IMG_5369.jpg" alt="Lookbook 3"/>
+    <img class="lookbook-img" src="images/IMG_5335.jpg" alt="Lookbook 4"/>
+    <img class="lookbook-img" src="images/IMG_5067.jpg" alt="Lookbook 5"/>
+    <!-- 继续添加你的主视觉产品照 -->
+  </div>
+</body>
+</html>
