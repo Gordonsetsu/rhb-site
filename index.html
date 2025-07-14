@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RHB – Sculptural Footwear</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@400;600&display=swap">
+  <style>
+    :root {
+      --black: #181818;
+      --white: #fff;
+      --gray: #b8b8b8;
+      --accent: #ececec;
+      --header-h: 60px;
+      --radius: 14px;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+      overflow-x: hidden;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    body {
+      transition: background 0.5s;
+    }
+    /* HEADER NAV */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: var(--header-h);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(24,24,24, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 0 36px;
+      box-sizing: border-box;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      cursor: pointer;
+      user-select: none;
+    }
+    .nav-ic {
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .nav-ic:hover { opacity: 1; }
+    /* HAMBURGER */
+    .hamburger {
+      width: 38px; height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: none;
+      border: none;
+      z-index: 999;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--white);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .menu-drawer {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(24,24,24,0.92);
+      z-index: 30;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 80px 48px 48px 48px;
+      animation: menuFade 0.4s;
+    }
+    .menu-drawer.active { display: flex; }
+    .menu-drawer .menu-link {
+      color: var(--white);
+      font-size: 2.2rem;
+      font-family: 'DM Serif Display', serif;
+      margin: 0 0 18px 0;
+      opacity: 0.92;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .menu-drawer .menu-link:hover { color: var(--gray); }
+    @keyframes menuFade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    /* HERO SLIDER */
+    .hero-slider {
+      width: 100vw; height: 100vh;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background: #111;
+    }
+    .slide {
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #000;
+      background-position: center;
+      background-size: cover;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(.33,1,.68,1);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide.active { opacity: 1; z-index: 2; }
+    .slide-txt {
+      position: absolute;
+      top: 48%; left: 50%;
+      transform: translate(-50%, -48%);
+      color: var(--white);
+      text-align: center;
+      z-index: 9;
+      width: 94vw;
+      max-width: 600px;
+      letter-spacing: 0.03em;
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.7rem;
+      line-height: 1.16;
+      background: rgba(12,12,12,0.14);
+      padding: 16px 8px 12px 8px;
+      border-radius: var(--radius);
+      backdrop-filter: blur(2px);
+      text-shadow: 0 4px 24px rgba(0,0,0,0.09);
+      box-sizing: border-box;
+    }
+    /* SLIDER DOTS */
+    .slider-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      display: flex; gap: 18px;
+      z-index: 10;
+    }
+    .slider-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.44);
+      border: 1.5px solid rgba(255,255,255,0.82);
+      cursor: pointer;
+      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 4px 0px rgba(0,0,0,0.08);
+    }
+    .slider-dot.active {
+      background: var(--white);
+      border: 1.5px solid var(--white);
+      box-shadow: 0 0 10px 1px rgba(255,255,255,0.30);
+    }
+    /* HIDE SCROLLBAR */
+    ::-webkit-scrollbar { width: 0px; background: transparent;}
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .slide-txt { font-size: 1.35rem; max-width: 98vw; }
+      .menu-drawer { padding: 80px 18px 28px 18px;}
+      .navbar { padding: 0 10px; }
+      .nav-left, .nav-right { gap: 18px;}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <button class="hamburger" id="menuBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <span class="logo">RHB</span>
+    </div>
+    <div class="nav-right">
+      <button class="nav-ic" aria-label="Search">
+        <!-- Magnifier icon -->
+        <svg width="21" height="21" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="9" r="7"/><path d="M15 15l5 5"/></svg>
+      </button>
+      <button class="nav-ic" aria-label="Account">
+        <!-- Account icon -->
+        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="7.5" r="4.5"/><path d="M21 20c0-4-4.5-7-10-7s-10 3-10 7"/></svg>
+      </button>
+      <button class="nav-ic" aria-label="Cart">
+        <!-- Cart icon -->
+        <svg width="23" height="23" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="20" r="2"/><circle cx="19" cy="20" r="2"/><path d="M1 1h3l2.7 13a2 2 0 0 0 2 1.7h9a2 2 0 0 0 2-1.7l2-9.3H6"/></svg>
+      </button>
+    </div>
+  </nav>
+  <!-- 菜单抽屉 -->
+  <div class="menu-drawer" id="menuDrawer">
+    <a class="menu-link" href="#">Home</a>
+    <a class="menu-link" href="#">Shop</a>
+    <a class="menu-link" href="#">Lookbook</a>
+    <a class="menu-link" href="#">Contact</a>
+  </div>
+  <!-- HERO SLIDER -->
+  <div class="hero-slider" id="heroSlider">
+    <!-- slides: 可添加多张大图+文本 -->
+    <div class="slide active" style="background-image:url('IMG_5335.jpg')">
+      <div class="slide-txt">THIS IS NOT JUST A SHOE.<br>IT'S A SCULPTURE YOU WALK IN.</div>
+    </div>
+    <div class="slide" style="background-image:url('IMG_5326.jpg')">
+      <div class="slide-txt">BLACK FLUIDITY<br><span style="font-size:1.3rem;font-family:'Inter',sans-serif;opacity:.7;">The unpredictable form of style</span></div>
+    </div>
+    <div class="slide" style="background-image:url('IMG_5067.jpg')">
+      <div class="slide-txt">MONOCHROME, BUT NEVER MONOTONE</div>
+    </div>
+    <div class="slide" style="background-image:url('IMG_5092.jpg')">
+      <div class="slide-txt">CONCEPTUAL FOOTWEAR<br><span style="font-size:1.3rem;font-family:'Inter',sans-serif;opacity:.7;">Minimalism meets sculpture</span></div>
+    </div>
+    <!-- 你可以根据需要添加更多slide，图片链接改成自己的 -->
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+  <script>
+    // HERO SLIDER
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('sliderDots');
+    let curIdx = 0, timer;
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      for(let i=0; i<slides.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'slider-dot'+(i===curIdx?' active':'');
+        dot.addEventListener('click', ()=>goSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+    function goSlide(idx) {
+      slides[curIdx].classList.remove('active');
+      curIdx = idx;
+      slides[curIdx].classList.add('active');
+      renderDots();
+      restartAuto();
+    }
+    function nextSlide() {
+      let idx = (curIdx+1)%slides.length;
+      goSlide(idx);
+    }
+    function restartAuto() {
+      if(timer) clearInterval(timer);
+      timer = setInterval(nextSlide, 5200);
+    }
+    renderDots(); restartAuto();
+
+    // MENU DRAWER
+    const menuBtn = document.getElementById('menuBtn');
+    const menuDrawer = document.getElementById('menuDrawer');
+    let menuOpen = false;
+    menuBtn.onclick = function() {
+      menuOpen = !menuOpen;
+      menuDrawer.classList.toggle('active', menuOpen);
+    };
+    // ESC关闭菜单
+    document.addEventListener('keydown', e=>{
+      if(e.key==="Escape" && menuOpen) {
+        menuDrawer.classList.remove('active');
+        menuOpen = false;
+      }
+    });
+    // 点击菜单外关闭
+    document.addEventListener('click', e=>{
+      if(menuOpen && !menuDrawer.contains(e.target) && !menuBtn.contains(e.target)){
+        menuDrawer.classList.remove('active');
+        menuOpen = false;
+      }
+    });
+  </script>
+</body>
+</html>
