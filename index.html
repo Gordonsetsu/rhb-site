@@ -234,7 +234,7 @@
   </div>
   <!-- HERO SLIDER -->
 <div class="hero-slider" id="heroSlider">
-  <!-- 首页视频 -->
+  <!-- slides: 可添加多张大图+文本 -->
   <div class="hero-video">
   <video autoplay muted loop playsinline preload="auto" style="width:100vw; height:100vh; object-fit:cover; display:block;">
     <source src="images/RHB_full.mp4" type="video/mp4" />
@@ -244,6 +244,36 @@
 
  
   <script>
+    // HERO SLIDER
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('sliderDots');
+let curIdx = 0, timer;
+
+function renderDots() {
+  dotsContainer.innerHTML = '';
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.className = 'slider-dot' + (i === curIdx ? ' active' : '');
+    dot.addEventListener('click', () => {
+      showSlide(i);
+    });
+    dotsContainer.appendChild(dot);
+  });
+}
+
+function showSlide(idx) {
+  curIdx = idx;
+  slides.forEach((s, i) => s.classList.toggle('active', i === curIdx));
+  renderDots();
+}
+
+function nextSlide() {
+  curIdx = (curIdx + 1) % slides.length;
+  showSlide(curIdx);
+}
+
+renderDots();
+timer = setInterval(nextSlide, 10000);
 
 const menuBtn = document.getElementById('menuBtn');
 const menuDrawer = document.getElementById('menuDrawer');
