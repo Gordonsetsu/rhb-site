@@ -232,14 +232,24 @@
     <a class="menu-link" href="lookbook.html">Lookbook</a>
     <a class="menu-link" href="contact.html">Contact</a>
   </div>
-  <!-- HERO SLIDER -->
-<div class="hero-slider" id="heroSlider">
   <!-- slides: 可添加多张大图+文本 -->
-  <div class="hero-video">
-  <video autoplay muted loop playsinline preload="auto" style="width:100vw; height:100vh; object-fit:cover; display:block;">
-    <source src="images/RHB_full.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+<div class="hero-slider" id="heroSlider">
+  <!-- Slide 1: Video -->
+  <div class="slide active">
+    <video autoplay muted loop playsinline preload="auto" style="width:100vw; height:100vh; object-fit:cover;">
+      <source src="images/RHB_full.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Slide 2: Image -->
+  <div class="slide" style="background-image:url('images/hero.jpg')">
+    <!-- 可加文字也可不加 -->
+    <!-- <div class="slide-txt">YOUR TEXT HERE</div> -->
+  </div>
+
+  <!-- 圆点 -->
+  <div class="slider-dots" id="sliderDots"></div>
 </div>
 
  
@@ -271,9 +281,6 @@ function nextSlide() {
   curIdx = (curIdx + 1) % slides.length;
   showSlide(curIdx);
 }
-
-renderDots();
-timer = setInterval(nextSlide, 10000);
 
 const menuBtn = document.getElementById('menuBtn');
 const menuDrawer = document.getElementById('menuDrawer');
