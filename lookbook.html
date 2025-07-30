@@ -115,14 +115,15 @@
       margin: 0 auto;
     }
     .lookbook-img {
-      width: 100%; border-radius: 14px;
-      box-shadow: 0 10px 32px 0 rgba(0,0,0,0.22);
-      transition: transform 0.35s cubic-bezier(.44,1.1,.62,1.1), box-shadow .4s;
-      object-fit: cover;
-      aspect-ratio: 4/5;
-      background: #222;
-      display: block;
-    }
+    width: 100%;
+    border-radius: 0; /* ← 改成直角 */
+    box-shadow: 0 10px 32px 0 rgba(0,0,0,0.22);
+    transition: transform 0.35s cubic-bezier(.44,1.1,.62,1.1), box-shadow .4s;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+    background: #222;
+    display: block;
+      }
     .lookbook-img:hover {
       transform: scale(1.04);
       box-shadow: 0 24px 60px 2px rgba(0,0,0,0.37);
@@ -160,11 +161,14 @@
   <!-- 主内容 -->
   <div class="lookbook-title">LOOKBOOK</div>
   <div class="lookbook-gallery">
-    <img class="lookbook-img" src="images/IMG_5297.jpg" alt="Lookbook 1"/>
-    <img class="lookbook-img" src="images/1.jpg" alt="Lookbook 2"/>
-    <img class="lookbook-img" src="images/IMG_5369.jpg" alt="Lookbook 3"/>
-    <img class="lookbook-img" src="images/IMG_4991.jpg" alt="Lookbook 4"/>
-    <img class="lookbook-img" src="images/IMG_5331.jpg" alt="Lookbook 5"/>
+    <img class="lookbook-img" src="images/000_2510.JPG" alt="Look 1" />
+    <img class="lookbook-img" src="images/000_2551.JPG" alt="Look 2" />
+    <img class="lookbook-img" src="images/000_2345.JPG" alt="Look 3" />
+    <img class="lookbook-img" src="images/000_2368.JPG" alt="Look 4" />
+    <img class="lookbook-img" src="images/000_2123.JPG" alt="Look 5" />
+    <img class="lookbook-img" src="images/000_2183.JPG" alt="Look 6" />
+</div>
+
     <!-- 继续添加产品图片 -->
   </div>
 
